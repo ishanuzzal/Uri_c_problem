@@ -7,7 +7,7 @@ int main()
 
     while(1){
         scanf("%f",&x);
-        if(x<0 || x>10.0){
+        if(x<0 || x>10){
             printf("nota invalida\n");
         }
         else{

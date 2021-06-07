@@ -7,10 +7,9 @@ typedef struct nodelist{
     struct nodelist *next;
 }node;
 
-node *head=NULL;
-node *temp;
 
-void print(){
+
+void print(node *head){
     int count=0;
 
     while(head!=NULL){
@@ -19,9 +18,14 @@ void print(){
         count++;
     }
 
-}
-void insert(int n){
 
+}
+node *insert(){
+    int n;
+    node *head=NULL;
+    node *temp=NULL;
+    scanf("%d",&n);
+    while(n!=0){
     node *nodes=(node *)malloc(sizeof(node));
     //entering nodes value and temporary assigning address null
     nodes->a=n;
@@ -34,9 +38,11 @@ void insert(int n){
     else{
         temp->next=nodes;
         temp=temp->next;
-        printf("%d\n",nodes->a);
     }
+    scanf("%d",&n);
 
+    }
+    return head;
 
 }
 
@@ -47,15 +53,9 @@ void main()
 {
     int i,n,element;
 
+    node *head=insert();
 
-    printf("How many elements you want to insert?\n");
-    scanf("%d",&n);
-    printf("Enter the elements\n");
-    for(i=0; i<n; i++){
-        scanf("%d",&element);
-        insert(element);
-    }
-    print();
+    print(head);
 
 
 

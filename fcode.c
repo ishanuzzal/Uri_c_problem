@@ -7,31 +7,10 @@ typedef struct nodelist{
     struct nodelist *next;
 }node;
 
-node *read(){
-    node *head=NULL;
-    int a;
-    scanf("%d",&a);
-    while(a!=0){
-        node *n=(node *)malloc(sizeof(node));
+node *head=NULL;
+node *temp;
 
-        n->a=a;
-        n->next=NULL;
-        if(head==NULL){
-            head=n;
-        }
-        else{
-            node *temp=head;
-            while(temp->next!=NULL){
-                temp=temp->next;
-            }
-            temp->next=n;
-        }
-        scanf("%d",&a);
-    }
-    return head;
-
-}
-void print(node *head){
+void print(){
     int count=0;
 
     while(head!=NULL){
@@ -41,53 +20,42 @@ void print(node *head){
     }
 
 }
-void insert(node *head){
-    int i=0,a,num;
+void insert(int n){
 
-    printf("Which index You want to insert?\n");
-    scanf("%d",&num);
-    printf("Enter the new value\n");
-    scanf("%d",&a);
-    node *n=(node *)malloc(sizeof(node));
-    n->a=a;
-    while(i<num-1){
-        head=head->next;
-         ++i;
+    node *nodes=(node *)malloc(sizeof(node));
+    //entering nodes value and temporary assigning address null
+    nodes->a=n;
+    nodes->next=NULL;
 
+    if(head==NULL){
+        head=nodes;
+        temp=head;
     }
-    node *temp=(node *)malloc(sizeof(node));
-    temp=head->next;
-    head->next=n;
-    n->next=temp;
+    else{
+        temp->next=nodes;
+        temp=temp->next;
+        printf("%d\n",nodes->a);
+    }
+
 
 }
-void del(node *head){
-    int i=0,num;
 
-    printf("Which index You want to delete?\n");
-    scanf("%d",&num);
-
-    while(i<num-1){
-        head=head->next;
-         ++i;
-
-    }
-    node *a=head->next;
-    node *b=a->next;
-    head->next=b;
-}
 
 
 
 void main()
 {
-    node *head;
+    int i,n,element;
 
-    head=read();
-    insert(head);
-    print(head);
-    del(head);
-    print(head);
+
+    printf("How many elements you want to insert?\n");
+    scanf("%d",&n);
+    printf("Enter the elements\n");
+    for(i=0; i<n; i++){
+        scanf("%d",&element);
+        insert(element);
+    }
+    print();
 
 
 

@@ -16,7 +16,7 @@ void print(){
     while(head!=NULL){
         printf("index: %d has value %d\n",count,head->a);
         head=head->next;
-        count++;
+        count++
     }
 
 }

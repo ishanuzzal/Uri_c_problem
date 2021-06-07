@@ -34,6 +34,7 @@ void insert(int n){
     else{
         temp->next=nodes;
         temp=temp->next;
+        printf("%d\n",nodes->a);
     }
 
 
